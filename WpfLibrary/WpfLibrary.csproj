@@ -48,8 +48,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangeTrackingVMBase.cs" />
     <Compile Include="ContentPresenterAttachedProperties.cs" />
     <Compile Include="DataTemplateByStringKeySelector.cs" />
+    <Compile Include="IValidating.cs" />
+    <Compile Include="IValidator.cs" />
     <Compile Include="IVMProvider.cs" />
     <Compile Include="KeyTypePair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
