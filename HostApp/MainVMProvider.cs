@@ -18,6 +18,13 @@ namespace HostApp
             };
 
         /// <inheritdoc/>
+        public IEnumerable<string> Keys => new List<string>
+        {
+            VM1Name,
+            VM2Name
+        };
+
+        /// <inheritdoc/>
         public INotifyPropertyChanged GetVM(string key)
         {
             return _vms[key].Invoke();

@@ -7,7 +7,7 @@ namespace WpfLibrary
     {
         private readonly IVMProvider _vmProvider;
         private INotifyPropertyChanged _currentVM;
-        private string _vmKey;
+        private string _key;
 
         public VMSwitcher(IVMProvider vmProvider)
         {
@@ -21,10 +21,10 @@ namespace WpfLibrary
             private set => SetValue(ref _currentVM, value);
         }
 
-        public string VMKey
+        public string Key
         {
-            get => _vmKey;
-            private set => SetValue(ref _vmKey, value);
+            get => _key;
+            private set => SetValue(ref _key, value);
         }
 
         public ICommand SwitchCommand { get; }
@@ -37,11 +37,11 @@ namespace WpfLibrary
                 return;
             }
 
-            var vmKey = (string)parameter;
-            if (_vmProvider.ContainsKey(vmKey))
+            var key = (string)parameter;
+            if (_vmProvider.ContainsKey(key))
             {
-                VMKey = vmKey;
-                CurrentVM = _vmProvider.GetVM(vmKey);
+                Key = key;
+                CurrentVM = _vmProvider.GetVM(key);
             }
         }
     }

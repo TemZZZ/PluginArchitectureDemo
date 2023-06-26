@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="MainVM.cs" />
     <Compile Include="MainVMProvider.cs" />
+    <Compile Include="PluginInfo.cs" />
     <Compile Include="View1.xaml.cs">
       <DependentUpon>View1.xaml</DependentUpon>
     </Compile>
@@ -87,7 +88,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PluginInfo.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

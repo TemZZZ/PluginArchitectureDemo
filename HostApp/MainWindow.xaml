@@ -27,7 +27,7 @@
                 Content="Switch to View 2"/>
         </StackPanel>
 
-        <ContentPresenter wpfLibrary:ContentPresenterAttachedProperties.ContentKey="{Binding ElementName=This, Path=DataContext.MainVMSwitcher.VMKey}" Content="{Binding MainVMSwitcher.CurrentVM}">
+        <ContentPresenter wpfLibrary:ContentPresenterAttachedProperties.ContentKey="{Binding ElementName=This, Path=DataContext.MainVMSwitcher.Key}" Content="{Binding MainVMSwitcher.CurrentVM}">
             <wpfLibrary:ContentPresenterAttachedProperties.ContentByKeySelector>
                 <wpfLibrary:DataTemplateByStringKeySelector>
                     <wpfLibrary:DataTemplateByStringKeySelector.TemplateTypes>
