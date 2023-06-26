@@ -21,6 +21,10 @@ namespace HostApp
             var pluginsInfo = loader.GetPluginsInfo(pluginsDirectory);
             loader.LoadPlugin(Current, pluginsInfo.First());
 
+            var mainWindow = new MainWindow();
+            mainWindow.DataContext = new MainVM();
+            mainWindow.Show();
+
             base.OnStartup(e);
         }
     }
