@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:HostApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wpfLibrary="clr-namespace:WpfLibrary;assembly=WpfLibrary"
+    xmlns:strings="clr-namespace:HostApp.Properties.Strings"
     Name="This"
     Title="MainWindow"
     Width="800"
@@ -18,13 +19,13 @@
                 Margin="3"
                 Command="{Binding MainVMSwitcher.SwitchCommand}"
                 CommandParameter="VM1"
-                Content="Switch to View 1"/>
+                Content="{x:Static strings:MainWindowStrings.SwitchView1ButtonText}"/>
 
             <Button
                 Margin="3"
                 Command="{Binding MainVMSwitcher.SwitchCommand}"
                 CommandParameter="VM2"
-                Content="Switch to View 2"/>
+                Content="{x:Static strings:MainWindowStrings.SwitchView2ButtonText}"/>
         </StackPanel>
 
         <ContentPresenter wpfLibrary:ContentPresenterAttachedProperties.ContentKey="{Binding ElementName=This, Path=DataContext.MainVMSwitcher.Key}" Content="{Binding MainVMSwitcher.CurrentVM}">
