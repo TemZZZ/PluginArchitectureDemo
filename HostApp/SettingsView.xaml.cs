@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace HostApp
 {
     /// <summary>
-    /// Interaction logic for View1.xaml
+    /// Interaction logic for View2.xaml
     /// </summary>
-    public partial class View1 : UserControl
+    public partial class SettingsView : UserControl
     {
-        public View1()
+        public SettingsView()
         {
             InitializeComponent();
         }

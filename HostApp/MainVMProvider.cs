@@ -7,21 +7,21 @@ namespace HostApp
 {
     internal class MainVMProvider : IVMProvider
     {
-        private const string VM1Name = "VM1";
-        private const string VM2Name = "VM2";
+        private const string TemplatesKey = "TemplatesKey";
+        private const string SettingsKey = "SettingsKey";
 
         private readonly Dictionary<string, Func<INotifyPropertyChanged>> _vms
             = new Dictionary<string, Func<INotifyPropertyChanged>>
             {
-                [VM1Name] = () => new VM1(),
-                [VM2Name] = () => new VM2(),
+                [TemplatesKey] = () => new TemplatesVM(),
+                [SettingsKey] = () => new SettingsVM(),
             };
 
         /// <inheritdoc/>
         public IEnumerable<string> Keys => new List<string>
         {
-            VM1Name,
-            VM2Name
+            TemplatesKey,
+            SettingsKey
         };
 
         /// <inheritdoc/>

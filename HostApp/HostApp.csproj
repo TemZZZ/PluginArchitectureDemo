@@ -36,13 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -63,14 +58,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainWindowStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="View1.xaml.cs">
-      <DependentUpon>View1.xaml</DependentUpon>
+    <Compile Include="TemplatesView.xaml.cs">
+      <DependentUpon>TemplatesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View2.xaml.cs">
-      <DependentUpon>View2.xaml</DependentUpon>
+    <Compile Include="SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VM1.cs" />
-    <Compile Include="VM2.cs" />
+    <Compile Include="TemplatesVM.cs" />
+    <Compile Include="SettingsVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -83,11 +78,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View1.xaml">
+    <Page Include="TemplatesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View2.xaml">
+    <Page Include="SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

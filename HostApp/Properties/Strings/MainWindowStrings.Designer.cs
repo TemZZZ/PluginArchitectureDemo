@@ -61,20 +61,20 @@ namespace HostApp.Properties.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Switch View1.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
-        public static string SwitchView1ButtonText {
+        public static string SettingsButtonText {
             get {
-                return ResourceManager.GetString("SwitchView1ButtonText", resourceCulture);
+                return ResourceManager.GetString("SettingsButtonText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Switch View2.
+        ///   Looks up a localized string similar to Templates.
         /// </summary>
-        public static string SwitchView2ButtonText {
+        public static string TemplatesButtonText {
             get {
-                return ResourceManager.GetString("SwitchView2ButtonText", resourceCulture);
+                return ResourceManager.GetString("TemplatesButtonText", resourceCulture);
             }
         }
     }

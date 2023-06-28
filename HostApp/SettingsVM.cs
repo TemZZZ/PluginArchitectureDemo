@@ -7,7 +7,7 @@ using WpfLibrary;
 
 namespace HostApp
 {
-    internal class VM1 : VMBase
+    internal class SettingsVM : VMBase
     {
     }
 }
