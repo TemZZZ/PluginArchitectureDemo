@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:HostApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wpfLibrary="clr-namespace:WpfLibrary;assembly=WpfLibrary"
     xmlns:strings="clr-namespace:HostApp.Properties.Strings"
+    xmlns:wpfLibrary="clr-namespace:WpfLibrary;assembly=WpfLibrary"
     Name="This"
     Title="MainWindow"
     Width="800"
@@ -29,14 +29,14 @@
         </StackPanel>
 
         <ContentPresenter wpfLibrary:ContentPresenterAttachedProperties.ContentKey="{Binding ElementName=This, Path=DataContext.MainVMSwitcher.Key}" Content="{Binding MainVMSwitcher.CurrentVM}">
-            <wpfLibrary:ContentPresenterAttachedProperties.ContentByKeySelector>
-                <wpfLibrary:DataTemplateByStringKeySelector>
-                    <wpfLibrary:DataTemplateByStringKeySelector.TemplateTypes>
+            <wpfLibrary:ContentPresenterAttachedProperties.ViewByKeySelector>
+                <wpfLibrary:ViewByStringKeySelector>
+                    <wpfLibrary:ViewByStringKeySelector.ViewTypes>
                         <wpfLibrary:KeyTypePair Key="VM1" Type="local:View1"/>
                         <wpfLibrary:KeyTypePair Key="VM2" Type="local:View2"/>
-                    </wpfLibrary:DataTemplateByStringKeySelector.TemplateTypes>
-                </wpfLibrary:DataTemplateByStringKeySelector>
-            </wpfLibrary:ContentPresenterAttachedProperties.ContentByKeySelector>
+                    </wpfLibrary:ViewByStringKeySelector.ViewTypes>
+                </wpfLibrary:ViewByStringKeySelector>
+            </wpfLibrary:ContentPresenterAttachedProperties.ViewByKeySelector>
         </ContentPresenter>
     </StackPanel>
 </Window>

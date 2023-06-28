@@ -3,23 +3,32 @@ using System.Windows;
 
 namespace WpfLibrary
 {
-    public class DataTemplateByStringKeySelector : DataTemplateSelector
+    /// <summary>
+    /// Поставщик представлений по строковому ключу.
+    /// </summary>
+    public class ViewByStringKeySelector : DataTemplateSelector
     {
+        /// <summary>
+        /// Текущий шаблон для представления контента.
+        /// </summary>
         private DataTemplate _currentTemplate;
 
-        public TemplateTypes TemplateTypes { get; set; } = new TemplateTypes();
+        /// <summary>
+        /// Зарегистрированные типы представлений.
+        /// </summary>
+        public ViewTypes ViewTypes { get; set; } = new ViewTypes();
 
         /// <inheritdoc/>
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             if (item == null
                 || item.GetType() != typeof(string)
-                || TemplateTypes == null)
+                || ViewTypes == null)
             {
                 return _currentTemplate;
             }
 
-            var templateTypesDictionary = TemplateTypes.ToDictionary();
+            var templateTypesDictionary = ViewTypes.ToDictionary();
             var key = (string)item;
             if (!templateTypesDictionary.ContainsKey(key))
             {

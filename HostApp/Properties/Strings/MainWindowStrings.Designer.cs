@@ -61,7 +61,7 @@ namespace HostApp.Properties.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Switch to View 1.
+        ///   Looks up a localized string similar to Switch View1.
         /// </summary>
         public static string SwitchView1ButtonText {
             get {
@@ -70,7 +70,7 @@ namespace HostApp.Properties.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Switch to View 2.
+        ///   Looks up a localized string similar to Switch View2.
         /// </summary>
         public static string SwitchView2ButtonText {
             get {

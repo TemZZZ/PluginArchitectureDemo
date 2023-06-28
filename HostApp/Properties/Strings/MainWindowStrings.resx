@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="SwitchView1ButtonText" xml:space="preserve">
-    <value>Switch to View 1</value>
+    <value>Switch View1</value>
   </data>
   <data name="SwitchView2ButtonText" xml:space="preserve">
-    <value>Switch to View 2</value>
+    <value>Switch View2</value>
   </data>
 </root>

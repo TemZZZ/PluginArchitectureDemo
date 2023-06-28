@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Description" xml:space="preserve">
-    <value>Меня зовут Plugin1</value>
+    <value>Я плагин 1</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Плагин 1</value>

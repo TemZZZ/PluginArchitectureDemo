@@ -63,11 +63,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainWindowStrings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Strings\MainWindowStrings.ru.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MainWindowStrings.ru.resx</DependentUpon>
-    </Compile>
     <Compile Include="View1.xaml.cs">
       <DependentUpon>View1.xaml</DependentUpon>
     </Compile>
@@ -117,18 +112,17 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings\MainWindowStrings.resx">
+      <SubType>Designer</SubType>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainWindowStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Strings\MainWindowStrings.ru.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EmbeddedResource Include="Properties\Strings\MainWindowStrings.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainWindowStrings.ru.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -138,11 +132,14 @@
       <Project>{F863A636-B99B-46D7-97E4-C2107598C891}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{3C87D28B-5ADE-4DDF-9EF9-43C2B6789406}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WpfLibrary\WpfLibrary.csproj">
       <Project>{E569A26B-A54A-4C09-85A2-E6FD7BF8B946}</Project>
       <Name>WpfLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

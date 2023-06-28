@@ -61,7 +61,7 @@ namespace Plugin1.Properties.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to My name is Plugin1.
+        ///   Looks up a localized string similar to I&apos;m plugin 1.
         /// </summary>
         public static string Description {
             get {
@@ -70,7 +70,7 @@ namespace Plugin1.Properties.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Plugin1.
+        ///   Looks up a localized string similar to Plugin 1.
         /// </summary>
         public static string Name {
             get {
