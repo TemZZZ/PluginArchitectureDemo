@@ -70,11 +70,47 @@ namespace Plugin1.Properties.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LNA stage count:.
+        /// </summary>
+        public static string LnaStageCountText {
+            get {
+                return ResourceManager.GetString("LnaStageCountText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plugin 1.
         /// </summary>
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stage count.
+        /// </summary>
+        public static string Template1Name {
+            get {
+                return ResourceManager.GetString("Template1Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Template 2.
+        /// </summary>
+        public static string Template2Name {
+            get {
+                return ResourceManager.GetString("Template2Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here you can define LNA&apos;s stage count.
+        /// </summary>
+        public static string TemplateVM1Description {
+            get {
+                return ResourceManager.GetString("TemplateVM1Description", resourceCulture);
             }
         }
     }

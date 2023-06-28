@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfLibrary="clr-namespace:WpfLibrary;assembly=WpfLibrary"
+    Name="This"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -17,6 +19,17 @@
         <ComboBox
             Grid.Row="0"
             Width="200"
-            HorizontalAlignment="Left"/>
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding Keys}"
+            SelectedItem="{Binding SelectedKey}"/>
+
+        <ContentPresenter
+            Grid.Row="1"
+            wpfLibrary:ContentPresenterAttachedProperties.ContentKey="{Binding ElementName=This, Path=DataContext.VMSwitcher.CurrentKey}"
+            Content="{Binding VMSwitcher.CurrentVM}">
+            <wpfLibrary:ContentPresenterAttachedProperties.ViewByKeySelector>
+                <wpfLibrary:ViewByStringKeySelector ViewTypes="{StaticResource TemplateViews}"/>
+            </wpfLibrary:ContentPresenterAttachedProperties.ViewByKeySelector>
+        </ContentPresenter>
     </Grid>
 </UserControl>

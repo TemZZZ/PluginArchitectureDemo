@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace WpfLibrary
@@ -11,7 +11,7 @@ namespace WpfLibrary
         /// <summary>
         /// Ключи вью-моделей, зарегистрированных у поставщика.
         /// </summary>
-        IEnumerable<string> Keys { get; }
+        ObservableCollection<string> Keys { get; }
 
         /// <summary>
         /// Возвращает вью-модель по ключу.

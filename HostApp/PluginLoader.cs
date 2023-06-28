@@ -49,19 +49,13 @@ namespace HostApp
         /// Загружает один плагин в домен текущего приложения.
         /// </summary>
         /// <param name="pluginInfo">Объект с информацией о плагине.</param>
-        public void LoadPlugin(PluginInfo pluginInfo)
+        public IPlugin LoadPlugin(PluginInfo pluginInfo)
         {
             var dll = AssemblyTools.LoadAssembly(pluginInfo.DllPath);
             var pluginType = dll.GetTypes().First(type => type == pluginInfo.Type);
             var plugin = (IPlugin)Activator.CreateInstance(pluginType);
-
             LoadResourceDictionary(Application.Current, plugin);
-
-            // TODO Здесь можно вписать код по забору остальной нужной информации из плагина.
-            // TODO После получения всей нужной информации плагин можно выгрузить.
-            // Начиная с .NET Core 3 можно выгружать сборки, если они больше не нужны.
-            // Но в .NET Framework такой возможности нет, поэтому загруженные библиотеки,
-            // даже если они больше не используются, будут просто занимать оперативную память.
+            return plugin;
         }
 
         /// <summary>

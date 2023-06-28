@@ -47,5 +47,11 @@
   <ItemGroup>
     <None Include="Core.snk" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfLibrary\WpfLibrary.csproj">
+      <Project>{E569A26B-A54A-4C09-85A2-E6FD7BF8B946}</Project>
+      <Name>WpfLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

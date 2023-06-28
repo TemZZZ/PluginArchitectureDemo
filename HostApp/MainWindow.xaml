@@ -18,25 +18,25 @@
             <Button
                 Margin="3"
                 Command="{Binding MainVMSwitcher.SwitchCommand}"
-                CommandParameter="TemplatesKey"
+                CommandParameter="TemplatesVMKey"
                 Content="{x:Static strings:MainWindowStrings.TemplatesButtonText}"/>
 
             <Button
                 Margin="3"
                 Command="{Binding MainVMSwitcher.SwitchCommand}"
-                CommandParameter="SettingsKey"
+                CommandParameter="SettingsVMKey"
                 Content="{x:Static strings:MainWindowStrings.SettingsButtonText}"/>
         </StackPanel>
 
         <ContentPresenter
             Margin="3"
-            wpfLibrary:ContentPresenterAttachedProperties.ContentKey="{Binding ElementName=This, Path=DataContext.MainVMSwitcher.Key}"
+            wpfLibrary:ContentPresenterAttachedProperties.ContentKey="{Binding ElementName=This, Path=DataContext.MainVMSwitcher.CurrentKey}"
             Content="{Binding MainVMSwitcher.CurrentVM}">
             <wpfLibrary:ContentPresenterAttachedProperties.ViewByKeySelector>
                 <wpfLibrary:ViewByStringKeySelector>
                     <wpfLibrary:ViewByStringKeySelector.ViewTypes>
-                        <wpfLibrary:KeyTypePair Key="TemplatesKey" Type="local:TemplatesView"/>
-                        <wpfLibrary:KeyTypePair Key="SettingsKey" Type="local:SettingsView"/>
+                        <wpfLibrary:KeyTypePair Key="TemplatesVMKey" Type="local:TemplatesView"/>
+                        <wpfLibrary:KeyTypePair Key="SettingsVMKey" Type="local:SettingsView"/>
                     </wpfLibrary:ViewByStringKeySelector.ViewTypes>
                 </wpfLibrary:ViewByStringKeySelector>
             </wpfLibrary:ContentPresenterAttachedProperties.ViewByKeySelector>

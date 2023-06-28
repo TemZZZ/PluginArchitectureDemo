@@ -21,9 +21,9 @@ namespace HostApp
             const string pluginsDirectory = @"C:\Repos\PluginArchitectureDemo\Plugin1\bin\Debug";
             var loader = new PluginLoader();
             var pluginsInfo = loader.GetPluginsInfo(pluginsDirectory);
-            loader.LoadPlugin(pluginsInfo.First());
+            var plugin = loader.LoadPlugin(pluginsInfo.First());
 
-            mainWindow.DataContext = new MainVM();
+            mainWindow.DataContext = new MainVM(plugin.GetTemplateVMProvider());
             mainWindow.Show();
 
             base.OnStartup(e);

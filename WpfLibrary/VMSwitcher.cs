@@ -21,7 +21,7 @@ namespace WpfLibrary
         /// <summary>
         /// Ключ текущей вью-модели.
         /// </summary>
-        private string _key;
+        private string _currentKey;
 
         /// <summary>
         /// Создает объект переключателя вью-моделей.
@@ -45,10 +45,10 @@ namespace WpfLibrary
         /// <summary>
         /// Ключ текущей вью-модели.
         /// </summary>
-        public string Key
+        public string CurrentKey
         {
-            get => _key;
-            private set => SetValue(ref _key, value);
+            get => _currentKey;
+            private set => SetValue(ref _currentKey, value);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace WpfLibrary
             var key = (string)parameter;
             if (_vmProvider.ContainsKey(key))
             {
-                Key = key;
+                CurrentKey = key;
                 CurrentVM = _vmProvider.GetVM(key);
             }
         }

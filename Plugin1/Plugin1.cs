@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Markup;
 using Core;
+using WpfLibrary;
 
 namespace Plugin1
 {
@@ -31,6 +32,12 @@ namespace Plugin1
                 UriKind.RelativeOrAbsolute);
 
             return XamlWriter.Save(resourceDictionary);
+        }
+
+        /// <inheritdoc/>
+        public IVMProvider GetTemplateVMProvider()
+        {
+            return new TemplateVMProvider();
         }
     }
 }

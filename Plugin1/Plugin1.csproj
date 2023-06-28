@@ -53,6 +53,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="TemplateView1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Plugin1.cs" />
@@ -74,6 +82,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Plugin1Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="TemplateView1.xaml.cs">
+      <DependentUpon>TemplateView1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateView2.xaml.cs">
+      <DependentUpon>TemplateView2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateVM1.cs" />
+    <Compile Include="TemplateVM2.cs" />
+    <Compile Include="TemplateVMProvider.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -81,6 +98,7 @@
     <EmbeddedResource Include="Properties\Strings\Plugin1Strings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Plugin1Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings\Plugin1Strings.ru.resx" />
     <None Include="Plugin1.snk" />
@@ -93,6 +111,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{F863A636-B99B-46D7-97E4-C2107598C891}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfLibrary\WpfLibrary.csproj">
+      <Project>{E569A26B-A54A-4C09-85A2-E6FD7BF8B946}</Project>
+      <Name>WpfLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

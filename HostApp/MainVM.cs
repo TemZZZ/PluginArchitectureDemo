@@ -5,9 +5,9 @@ namespace HostApp
 {
     internal class MainVM : VMBase
     {
-        public MainVM()
+        public MainVM(IVMProvider templateVMProvider)
         {
-            var vmProvider = new MainVMProvider();
+            var vmProvider = new MainVMProvider(templateVMProvider);
             MainVMSwitcher = new VMSwitcher(vmProvider);
             MainVMSwitcher.SwitchCommand.Execute(vmProvider.Keys.First());
         }

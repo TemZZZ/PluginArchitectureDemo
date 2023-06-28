@@ -1,4 +1,7 @@
-﻿namespace Core
+﻿using System.Collections.Generic;
+using WpfLibrary;
+
+namespace Core
 {
     /// <summary>
     /// Интерфейс фасадного класса, который используется для доступа к содержимого плагина.
@@ -25,5 +28,11 @@
         /// </summary>
         /// <returns>XAML словарь ресурсов в виде строки.</returns>
         string GetXamlResourceDictionary();
+
+        /// <summary>
+        /// Возвращает поставщика вью-моделей для представлений шаблонов.
+        /// </summary>
+        /// <returns>Поставщик вью-моделей для представлений шаблонов.</returns>
+        IVMProvider GetTemplateVMProvider();
     }
 }

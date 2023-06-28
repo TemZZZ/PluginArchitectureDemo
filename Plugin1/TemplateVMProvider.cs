@@ -4,29 +4,29 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using WpfLibrary;
 
-namespace HostApp
+namespace Plugin1
 {
-    internal class MainVMProvider : IVMProvider
+    internal class TemplateVMProvider : IVMProvider
     {
-        private const string TemplatesVMKey = "TemplatesVMKey";
-        private const string SettingsVMKey = "SettingsVMKey";
+        private readonly string TemplateVM1Key = Properties.Strings.Plugin1Strings.Template1Name;
+        private readonly string TemplateVM2Key = Properties.Strings.Plugin1Strings.Template2Name;
 
         private readonly Dictionary<string, Func<INotifyPropertyChanged>> _vms;
 
-        public MainVMProvider(IVMProvider templateVMProvider)
+        public TemplateVMProvider()
         {
             _vms = new Dictionary<string, Func<INotifyPropertyChanged>>
             {
-                [TemplatesVMKey] = () => new TemplatesVM(templateVMProvider),
-                [SettingsVMKey] = () => new SettingsVM()
+                [TemplateVM1Key] = () => new TemplateVM1(),
+                [TemplateVM2Key] = () => new TemplateVM2()
             };
         }
 
         /// <inheritdoc/>
         public ObservableCollection<string> Keys => new ObservableCollection<string>
         {
-            TemplatesVMKey,
-            SettingsVMKey
+            TemplateVM1Key,
+            TemplateVM2Key
         };
 
         /// <inheritdoc/>

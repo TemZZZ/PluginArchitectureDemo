@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="HostApp.SettingsView"
+    x:Class="Plugin1.TemplateView2"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,5 +7,5 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <TextBlock FontSize="32" Text="И здесь тоже вообще-то)))"/>
+    <TextBlock FontSize="32" Text="Здесь можно зафигачить новое представление"/>
 </UserControl>

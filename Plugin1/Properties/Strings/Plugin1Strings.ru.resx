@@ -120,7 +120,19 @@
   <data name="Description" xml:space="preserve">
     <value>Я плагин 1</value>
   </data>
+  <data name="LnaStageCountText" xml:space="preserve">
+    <value>Количество каскадов МШУ:</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Плагин 1</value>
+  </data>
+  <data name="Template1Name" xml:space="preserve">
+    <value>Количество каскадов</value>
+  </data>
+  <data name="Template2Name" xml:space="preserve">
+    <value>Шаблон 2</value>
+  </data>
+  <data name="TemplateVM1Description" xml:space="preserve">
+    <value>Здесь вы можете задать количество каскадов МШУ</value>
   </data>
 </root>

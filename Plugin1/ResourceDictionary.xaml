@@ -1,4 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:wpfLibrary="clr-namespace:WpfLibrary;assembly=WpfLibrary"
+                    xmlns:plugin1="clr-namespace:Plugin1"
+                    xmlns:strings="clr-namespace:Plugin1.Properties.Strings">
+
+    <wpfLibrary:ViewTypes x:Key="TemplateViews">
+        <wpfLibrary:KeyTypePair Key="{x:Static strings:Plugin1Strings.Template1Name}" Type="plugin1:TemplateView1"/>
+        <wpfLibrary:KeyTypePair Key="{x:Static strings:Plugin1Strings.Template2Name}" Type="plugin1:TemplateView2"/>
+    </wpfLibrary:ViewTypes>
 </ResourceDictionary>
