@@ -28,7 +28,10 @@
                 Content="{x:Static strings:MainWindowStrings.SettingsButtonText}"/>
         </StackPanel>
 
-        <ContentPresenter Margin="3" wpfLibrary:ContentPresenterAttachedProperties.ContentKey="{Binding ElementName=This, Path=DataContext.MainVMSwitcher.Key}" Content="{Binding MainVMSwitcher.CurrentVM}">
+        <ContentPresenter
+            Margin="3"
+            wpfLibrary:ContentPresenterAttachedProperties.ContentKey="{Binding ElementName=This, Path=DataContext.MainVMSwitcher.Key}"
+            Content="{Binding MainVMSwitcher.CurrentVM}">
             <wpfLibrary:ContentPresenterAttachedProperties.ViewByKeySelector>
                 <wpfLibrary:ViewByStringKeySelector>
                     <wpfLibrary:ViewByStringKeySelector.ViewTypes>
