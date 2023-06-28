@@ -49,6 +49,7 @@ namespace HostApp
         /// Загружает один плагин в домен текущего приложения.
         /// </summary>
         /// <param name="pluginInfo">Объект с информацией о плагине.</param>
+        /// <returns>Объект загруженного плагина.</returns>
         public IPlugin LoadPlugin(PluginInfo pluginInfo)
         {
             var dll = AssemblyTools.LoadAssembly(pluginInfo.DllPath);

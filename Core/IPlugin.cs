@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using WpfLibrary;
+﻿using WpfLibrary;
 
 namespace Core
 {
