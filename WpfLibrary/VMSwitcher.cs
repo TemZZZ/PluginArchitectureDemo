@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace WpfLibrary
@@ -32,6 +33,16 @@ namespace WpfLibrary
             _vmProvider = vmProvider;
             SwitchCommand = new RelayCommand(Switch);
         }
+
+        /// <summary>
+        /// Событие, возникающее перед переключением вью-моделей.
+        /// </summary>
+        public event EventHandler<VMSwitchingEventArgs> VMSwitching;
+
+        /// <summary>
+        /// Событие, возникающее после переключения вью-моделей.
+        /// </summary>
+        public event EventHandler<VMSwitchedEventArgs> VMSwitched;
 
         /// <summary>
         /// Текущая вью-модель.
@@ -69,11 +80,23 @@ namespace WpfLibrary
             }
 
             var key = (string)parameter;
-            if (_vmProvider.ContainsKey(key))
+            if (!_vmProvider.ContainsKey(key))
             {
-                CurrentKey = key;
-                CurrentVM = _vmProvider.GetVM(key);
+                return;
             }
+
+            var oldVM = _currentVM;
+            var newVM = _vmProvider.GetVM(key);
+            var eventArgs = new VMSwitchingEventArgs(oldVM, newVM);
+            VMSwitching?.Invoke(this, eventArgs);
+            if (eventArgs.Handled)
+            {
+                return;
+            }
+
+            CurrentKey = key;
+            CurrentVM = newVM;
+            VMSwitched?.Invoke(this, new VMSwitchedEventArgs(oldVM, newVM));
         }
     }
 }
