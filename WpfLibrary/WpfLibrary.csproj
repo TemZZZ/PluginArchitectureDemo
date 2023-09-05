@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ChangeTrackingVMBase.cs" />
     <Compile Include="ContentPresenterAttachedProperties.cs" />
+    <Compile Include="MyCollection.cs" />
     <Compile Include="ViewByStringKeySelector.cs" />
     <Compile Include="IToggler.cs" />
     <Compile Include="IToggling.cs" />
