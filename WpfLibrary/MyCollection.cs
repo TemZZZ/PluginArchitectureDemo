@@ -1,55 +1,166 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace WpfLibrary
 {
-    internal class MyCollection<T> : INotifyCollectionChanged, IRevertibleChangeTracking
-        where T : INotifyPropertyChanged
+    public class MyCollection<T>
+        : Collection<T>, INotifyPropertyChanged, INotifyCollectionChanged, IRevertibleChangeTracking
     {
+        private readonly List<(NotifyCollectionChangedAction Action, int Index, T Item)> _actionsHistory
+            = new List<(NotifyCollectionChangedAction, int, T)>();
+
+        private bool _isChanged;
+
         /// <inheritdoc/>
         public event NotifyCollectionChangedEventHandler CollectionChanged;
 
-        public MyCollection(params string[] propertyNames)
-        {
-
-        }
+        /// <inheritdoc/>
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <inheritdoc/>
-        public bool IsChanged { get; }
-
-        public void Add(T item)
+        public bool IsChanged
         {
-            CollectionChanged?.Invoke(
-                this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
-        }
-
-        public void Remove(T item)
-        {
-            CollectionChanged?.Invoke(
-                this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
-        }
-
-        public void Clear()
-        {
-            CollectionChanged?.Invoke(
-                this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            get => _isChanged;
+            set => SetProperty(ref _isChanged, value);
         }
 
         /// <inheritdoc/>
         public void AcceptChanges()
         {
-            throw new NotImplementedException();
+            if (!IsChanged)
+            {
+                return;
+            }
+
+            _actionsHistory.Clear();
+            IsChanged = false;
         }
 
         /// <inheritdoc/>
         public void RejectChanges()
         {
-            throw new NotImplementedException();
+            if (!IsChanged)
+            {
+                return;
+            }
+
+            foreach (var (action, index, item) in _actionsHistory)
+            {
+                switch (action)
+                {
+                    case NotifyCollectionChangedAction.Add:
+                        Items.RemoveAt(index);
+                        break;
+
+                    case NotifyCollectionChangedAction.Remove:
+                        Items.Insert(index, item);
+                        break;
+                }
+            }
+
+            AcceptChanges();
+        }
+
+        /// <inheritdoc/>
+        protected override void InsertItem(int index, T item)
+        {
+            InsertItemInternal(index, item);
+            CollectionChanged?.Invoke(
+                this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add));
+            base.InsertItem(index, item);
+        }
+
+        /// <inheritdoc/>
+        protected override void RemoveItem(int index)
+        {
+            RemoveItemInternal(index);
+            CollectionChanged?.Invoke(
+                this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove));
+            base.RemoveItem(index);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetItem(int index, T item)
+        {
+            RemoveItemInternal(index);
+            InsertItemInternal(index, item);
+            CollectionChanged?.Invoke(
+                this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace));
+            base.SetItem(index, item);
+        }
+
+        /// <inheritdoc/>
+        protected override void ClearItems()
+        {
+            if (Count == 0)
+            {
+                return;
+            }
+
+            for (int i = 0; i < Count; i++)
+            {
+                RemoveItemInternal(i);
+            }
+
+            CollectionChanged?.Invoke(
+                this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+            base.ClearItems();
+        }
+
+        private void UpdateActionsHistory(NotifyCollectionChangedAction action, int index, T item)
+        {
+            var oppositeAction = NotifyCollectionChangedAction.Remove;
+            if (action == NotifyCollectionChangedAction.Remove)
+            {
+                oppositeAction = NotifyCollectionChangedAction.Add;
+            }
+
+            var oppositeRecordIndex = _actionsHistory.FindLastIndex(record =>
+                record.Action == oppositeAction
+                && record.Index == index
+                && EqualityComparer<T>.Default.Equals(record.Item, item));
+
+            if (oppositeRecordIndex < 0)
+            {
+                _actionsHistory.Add((action, index, item));
+            }
+            else
+            {
+                _actionsHistory.RemoveAt(oppositeRecordIndex);
+            }
+        }
+
+        private void InsertItemInternal(int index, T item)
+        {
+            UpdateActionsHistory(NotifyCollectionChangedAction.Add, index, item);
+            UpdateIsChangedProperty();
+        }
+
+        private void RemoveItemInternal(int index)
+        {
+            var item = Items[index];
+            UpdateActionsHistory(NotifyCollectionChangedAction.Remove, index, item);
+            UpdateIsChangedProperty();
+        }
+
+        private void UpdateIsChangedProperty()
+        {
+            IsChanged = _actionsHistory.Count > 0;
+        }
+
+        private void SetProperty<TField>(
+            ref TField field, TField value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<TField>.Default.Equals(field, value))
+            {
+                return;
+            }
+
+            field = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
