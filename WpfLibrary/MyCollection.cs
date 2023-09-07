@@ -47,8 +47,10 @@ namespace WpfLibrary
                 return;
             }
 
-            foreach (var (action, index, item) in _actionsHistory)
+            var i = _actionsHistory.Count - 1;
+            while (i >= 0)
             {
+                var (action, index, item) = _actionsHistory[i];
                 switch (action)
                 {
                     case NotifyCollectionChangedAction.Add:
@@ -59,9 +61,12 @@ namespace WpfLibrary
                         Items.Insert(index, item);
                         break;
                 }
+
+                i--;
             }
 
-            AcceptChanges();
+            _actionsHistory.Clear();
+            IsChanged = false;
         }
 
         /// <inheritdoc/>
